@@ -17,6 +17,7 @@ export default {
     name: 'Categories',
     setup() {
         const store = useStore();
+        
         return {
             categories: store.categories,
         };
