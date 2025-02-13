@@ -13,16 +13,14 @@
             <table class="min-w-full bg-gray-100 border border-gray-200 shadow-md">
                 <thead class="bg-gray-100 border-b">
                     <tr>
-                        <th class="py-3 px-6 text-left">#</th>
                         <th class="py-3 px-6 text-left">İsim</th>
-                        <th class="py-3 px-6 text-left">İşlem</th>
+                        <th class="py-3 px-6 text-right">İşlem</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="border-b hover:bg-gray-50" v-for="category in categories" :key="category.id">
-                        <td class="py-3 px-6">1</td>
                         <td class="py-3 px-6">{{ category.name }}</td>
-                        <td class="py-3 px-6">
+                        <td class="py-3 px-6 text-right">
                             <router-link :to="`/categories/edit/${category.id}`" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
                                 Düzenle
                             </router-link>
