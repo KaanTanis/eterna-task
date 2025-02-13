@@ -6,6 +6,10 @@ export const useStore = defineStore("main", {
         categories: [],
         products: [],
     }),
+    getters: {
+        getCategories: (state) => state.categories,
+        getProducts: (state) => state.products,
+    },
     actions: {
         async fetchCategories() {
             try {
@@ -13,6 +17,14 @@ export const useStore = defineStore("main", {
                 this.categories = response.data;
             } catch (error) {
                 console.error("Kategorileri çekerken hata oluştu:", error);
+            }
+        },
+        async fetchProducts() {
+            try {
+                const response = await axios.get("/api/products");
+                this.products = response.data;
+            } catch (error) {
+                console.error("Ürünleri çekerken hata oluştu:", error);
             }
         },
         addCategory(category) {

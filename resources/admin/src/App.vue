@@ -2,7 +2,7 @@
   <div class="flex flex-col min-h-screen">
     <Header />
     <div class="flex flex-1">
-      <Sidebar />
+      <!-- <Sidebar /> -->
       <main class="flex-1 p-4">
         <router-view />
       </main>
