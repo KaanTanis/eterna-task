@@ -1,6 +1,7 @@
 <?php 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +28,28 @@ class AuthController extends Controller
             'message' => 'Giriş bilgileri hatalı'
         ], 401);
     }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        auth()->login($user);
+
+        return response()->json([
+            'message' => 'Başarıyla kayıt oldunuz!',
+        ]);
+    }
+
 
     public function logout(Request $request)
     {

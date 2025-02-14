@@ -17,6 +17,7 @@
     <header class="bg-blue-500 text-white py-4">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="{{ url('/') }}" class="text-xl font-bold">Kafeler</a>
+            <a href="{{ url('/admin/register') }}">Kayıt Ol</a>
         </div>
     </header>
 
