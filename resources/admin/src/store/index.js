@@ -19,12 +19,32 @@ export const useStore = defineStore("main", {
                 console.error("Kategorileri çekerken hata oluştu:", error);
             }
         },
+        async deleteCategory(id) {
+            try {
+                await axios.delete(`/api/categories/${id}`);
+                this.categories = this.categories.filter(
+                    (category) => category.id !== id
+                );
+            } catch (error) {
+                console.error("Kategori silinirken hata oluştu:", error);
+            }
+        },
         async fetchProducts() {
             try {
                 const response = await axios.get("/api/products");
                 this.products = response.data;
             } catch (error) {
                 console.error("Ürünleri çekerken hata oluştu:", error);
+            }
+        },
+        async deleteProduct(id) {
+            try {
+                await axios.delete(`/api/products/${id}`);
+                this.products = this.products.filter(
+                    (product) => product.id !== id
+                );
+            } catch (error) {
+                console.error("Ürün silinirken hata oluştu:", error);
             }
         },
         addCategory(category) {

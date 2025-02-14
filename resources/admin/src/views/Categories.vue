@@ -24,33 +24,47 @@
                             <router-link :to="`/categories/edit/${category.id}`" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
                                 Düzenle
                             </router-link>
-                            <a href="" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2">Sil</a>
+                            <button 
+                                @click="confirmDelete(category.id)"
+                                class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+                            >
+                                Sil
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
 </template>
 
 <script>
 import { useStore } from '../store';
 import { onMounted } from 'vue';
-import { storeToRefs } from 'pinia'
+import { storeToRefs } from 'pinia';
+import { useToast } from 'vue-toast-notification';
 
 export default {
     name: 'Categories',
     setup() {
         const store = useStore();
         const { categories } = storeToRefs(store);
+        const toast = useToast();
 
         onMounted(async () => {
             await store.fetchCategories();
         });
 
+        const confirmDelete = async (id) => {
+            if (confirm("Bu kategoriyi silmek istediğinize emin misiniz?")) {
+                await store.deleteCategory(id);
+                toast.success("Kategori başarıyla silindi!");
+            }
+        };
+
         return {
             categories,
+            confirmDelete
         };
     },
 };

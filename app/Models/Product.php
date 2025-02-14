@@ -23,4 +23,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function firstCategory()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
