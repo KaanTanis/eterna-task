@@ -1,11 +1,11 @@
 # E-Cafe Admin Panel
 
-Bu proje, Laravel 11 ve Vue 3 kullanılarak geliştirilmiş bir panelipaneldirdir. Vue.js, Laravel'in yapısını bozmadan doğrudan `resources` dizini içerisinde entegre edilmiş ve Blade template engine ile uyumlu çalışacak şekilde kurgulanmıştır.
+Bu proje, Laravel 11 ve Vue 3 kullanılarak geliştirilmiş bir paneldir. Vue.js, Laravel'in yapısını bozmadan doğrudan `resources` dizini içerisinde entegre edilmiş ve Blade template engine ile uyumlu çalışacak şekilde kurgulanmıştır.
 
 ## Teknolojiler
 
 - Laravel 11
-- Vue 3
+- Vue 3 (pinia, axios, toast)
 - Tailwind CSS 4
 - Vite
 
