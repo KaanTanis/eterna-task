@@ -29,6 +29,12 @@ cd [proje-dizini]
 composer install
 npm install
 ```
+2.1 Bağımlılıkları yükleyin:
+```bash
+cd /resources/admin
+npm install
+npm run build
+```
 3. SQLite veritabanını oluşturun:
 ```bash
 touch database/database.sqlite
@@ -37,6 +43,7 @@ touch database/database.sqlite
 ```bash
 cp .env.example .env
 php artisan key:generate
+php artisan storage:link
 ```
 5. Veritabanını hazırlayın:
 ```bash
@@ -55,3 +62,7 @@ Zaman sıkıntısı nedeniyle işlevsellik taraflarında bazı kısımların eks
 Yine zaman sıkıntısı dolayısıyla tasarım aşamalarına çok fazla özenilmedi ve daha random ilerlenildi.
 
 Yapılabilecekleri sunmak adına çalışma basit tutuldu.
+
+### İletişim
+- +90 544 237 3323
+- [E-Mail](mailto:kt@kaantanis.com)
