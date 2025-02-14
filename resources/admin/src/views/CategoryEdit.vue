@@ -94,7 +94,9 @@ export default {
 
                 router.push("/categories");
             } catch (error) {
-                console.error("Kategori güncellenirken hata oluştu:", error);
+                for (const key in error.response.data.errors) {
+                    toast.error(error.response.data.errors[key][0]);
+                }
             }
         };
 

@@ -42,17 +42,17 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(CategoryRequest $request)
     {
         $imagePath = null;
 
-        if (request()->hasFile('image')) {
-            $imagePath = request()->file('image')->store('categories', 'public');
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('categories', 'public');
         }
 
         auth()->user()->categories()->create([
-            'name' => request()->name,
-            'slug' => request()->slug,
+            'name' => $request->name,
+            'slug' => $request->slug,
             'image' => $imagePath,
         ]);
 

@@ -2,6 +2,8 @@
     <div class="p-4 container mx-auto">
         <h2 class="text-xl font-bold mb-4">Kayıt Ol</h2>
         <form @submit.prevent="register" class="space-y-4">
+            <input v-model="name" type="text" required placeholder="İsim" class="border p-2 w-full rounded">
+            <input v-model="surname" type="text" required placeholder="Soyisim" class="border p-2 w-full rounded">
             <input v-model="username" type="text" required placeholder="Kullanıcı Adı" class="border p-2 w-full rounded">
             <input v-model="email" type="email" required placeholder="E-posta" class="border p-2 w-full rounded">
             <input v-model="password" type="password" required placeholder="Şifre" class="border p-2 w-full rounded">
@@ -26,6 +28,8 @@ axios.defaults.baseURL = "/";
 
 export default {
     setup() {
+        const name = ref("");
+        const surname = ref("");
         const username = ref("");
         const email = ref("");
         const password = ref("");
@@ -41,6 +45,8 @@ export default {
 
                 // Register isteği
                 const response = await axios.post("/api/register", {
+                    name: name.value,
+                    surname: surname.value,
                     username: username.value,
                     email: email.value,
                     password: password.value,
@@ -51,15 +57,16 @@ export default {
                     await auth.fetchUser();
                     router.push("/");
 
-                    toast.success("Başarıyla kayıt oldunuz! Giriş yapabilirsiniz.");
+                    toast.success("Başarıyla kayıt oldunuz!");
                 }
             } catch (error) {
-                console.error("Kayıt hatası:", error);
-                alert(error.response?.data?.message || "Kayıt işlemi başarısız oldu.");
+                for (const key in error.response.data.errors) {
+                    toast.error(error.response.data.errors[key][0]);
+                }
             }
         };
 
-        return { username, email, password, password_confirmation, register };
+        return { name, surname, username, email, password, password_confirmation, register };
     },
 };
 </script>

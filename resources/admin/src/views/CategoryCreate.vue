@@ -74,8 +74,10 @@ export default {
 
                 router.push("/categories"); // Listeye yönlendir
             } catch (error) {
-                console.error("Kategori oluşturulurken hata oluştu:", error);
-                toast.error("Kategori eklenirken hata oluştu!");
+                console.log(error);
+                for (const key in error.response.data.errors) {
+                    toast.error(error.response.data.errors[key][0]);
+                }
             }
         };
 

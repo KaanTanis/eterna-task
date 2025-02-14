@@ -18,7 +18,15 @@ class DatabaseSeeder extends Seeder
             'surname' => 'User',
             'email' => 'test@example.com',
             'password'=> bcrypt('12345678'),
-            'user_name' => 'testuser',
+            'user_name' => 'TestUser',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Test2',
+            'surname' => 'User2',
+            'email' => 'test2@example.com',
+            'password'=> bcrypt('12345678'),
+            'user_name' => 'TestUser2',
         ]);
 
         $this->call(CategorySeeder::class);

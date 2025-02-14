@@ -47,8 +47,9 @@ export default {
                     toast.success("Başarıyla giriş yaptınız!");
                 }
             } catch (error) {
-                console.error("Giriş hatası:", error);
-                alert(error.response?.data?.message || "Giriş başarısız!");
+                for (const key in error.response.data.errors) {
+                    toast.error(error.response.data.errors[key][0]);
+                }
             }
         };
 
