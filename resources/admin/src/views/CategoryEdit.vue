@@ -72,6 +72,8 @@ export default {
                 
                 formData.append("name", name.value);
                 formData.append("slug", slug.value);
+                // method
+                formData.append("_method", "PUT");
                 if (image.value) {
                     formData.append("image", image.value);
                 }

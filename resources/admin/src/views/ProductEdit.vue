@@ -97,6 +97,8 @@ export default {
                 formData.append("slug", slug.value);
                 formData.append("price", price.value);
                 formData.append("description", description.value);
+                // method
+                formData.append("_method", "PUT");
                 selectedCategories.value.forEach(category => {
                     formData.append("categories[]", category);
                 });

@@ -21,7 +21,7 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $categoryId = $this->route('id');
+        $categoryId = $this->route('category');
 
         return [
             'name' => 'required|string|min:3|max:255',

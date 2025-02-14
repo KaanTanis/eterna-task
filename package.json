@@ -2,8 +2,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "concurrently \"vite\" \"vite --config vite.admin.config.js\"",
-        "build": "vite build && vite build --config vite.admin.config.js"
+        "dev": "vite",
+        "build": "vite build",
+        "admin-dev": "vite --config vite.admin.config.js",
+        "admin-build": "vite build --config vite.admin.config.js"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.2.1",
