@@ -53,6 +53,12 @@ php artisan migrate --seed
 ```bash
 npm run build
 ```
+7. Bilgiler
+```bash
+Admin Paneli: /admin
+E-posta: test@example.com
+Şifre: 12345678
+```
 
 ## Geliştirme Notları
 Bu bir demo projedir. Dolayısıyla; 
